@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 import { Switch, Route } from 'react-router-dom';
 
 import Auth from './Components/Auth/Auth';

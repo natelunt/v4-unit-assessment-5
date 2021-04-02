@@ -1,8 +1,9 @@
 require('dotenv').config();
 const express = require('express'),
+      massive = require('massive'),
+      session = require('express-session'),
       userCtrl = require('./controllers/user'),
-      postCtrl = require('./controllers/posts');
-const massive = require('massive');
+      postCtrl = require('./controllers/posts')
 
 
 const app = express();
@@ -16,6 +17,7 @@ massive({
     ssl: { rejectUnauthorized: false }
 }).then((dbInstance) => {
     app.set('db', dbInstance)
+    console.log('database connected')
 })
 
 app.use(
@@ -23,7 +25,7 @@ app.use(
         resave: true,
         saveUninitialized: false,
         secret: SESSION_SECRET,
-        cookie: { maxAge: 60000 },
+        cookie: { maxAge: 1000 * 60 * 60 * 24 * 14 }
     })
 )
 
