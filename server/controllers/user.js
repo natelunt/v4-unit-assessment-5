@@ -40,6 +40,7 @@ module.exports = {
         }
 
         //Place user on session and send back to client
+        delete existingUser[0].password
         req.session.user = existingUser[0]
         return res.status(202).send(req.session.user)
     },
